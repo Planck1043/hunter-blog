@@ -1,6 +1,18 @@
 <h1>新建博客</h1>
 <%= form_for @blog do |f| %>
-<table>
+  <% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@blog.errors.count, "error") %>禁止
+      新建博客出现错误
+    </h2>
+    <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <p>
     <%= f.label "标题" %>
     <%= f.text_field :title %>
@@ -15,6 +27,5 @@
     <%= f.submit "提交" %>
   </p>
 <% end %>
-</table>
 </p>
 <%= link_to '返回', blogs_path %>
