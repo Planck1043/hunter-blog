@@ -1,0 +1,12 @@
+<h1>Show</h1>
+<p>
+  <strong>标题:</strong>
+  <%= @blog.title %>
+</p>
+<p>
+  <strong>内容:</strong>
+  <%= @blog.text %>
+</p>
+<%= link_to '返回', blogs_path %>
+</p>
+<%= link_to '修改', edit_blog_path %>
