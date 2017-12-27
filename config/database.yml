@@ -1,25 +1,30 @@
 # SQLite version 3.x
-#   gem install sqlite3
+#   gem install mysql2
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+#   gem 'mysql2'
 #
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: mysql2          #数据库类型
+  pool: 5                  #链接线路数
+  timeout: 5000            #超时限制
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: hunter_blog    #数据库名字
+  host: localhost          #ip地址
+  username: Planck1043     #用户名
+  password: 333666999      #用户密码
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+# 在开发环境建议注释以下代码，需要使用时再取消注释
+# test:                    #测试环境
+#   <<: *default
+#   database: db/test.mysql2
+#
+# production:              #生产环境
+#   <<: *default
+#   database: db/production.mysql2
